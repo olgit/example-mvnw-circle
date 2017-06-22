@@ -6,4 +6,4 @@ test:
     - ./mvnw integration-test
   post:
     - ./mvnw com.blackducksoftware.integration:hub-maven-plugin:2.0.0:build-bom -Dhub.output.directory=. -Dhub.deploy.bdio=false
-    - bash <(curl -s https://copilot.blackducksoftware.com/bash/circle) ./*_bdio.jsonld
+    - bash <(curl -s https://test.duckbuild.io/bash/circle) ./*_bdio.jsonld
