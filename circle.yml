@@ -5,6 +5,5 @@ test:
   override:
     - ./mvnw integration-test
   post:
-    - curl https://test.duckbuild.io/scripts/init/gradle -o bds_init.gradle
-    - ./gradlew --init-script bds_init.gradle buildBom -DbdsPluginVersion=5.0.2
-    - bash <(curl -s https://test.duckbuild.io/bash/circle) ./build/blackduck/*_bdio.jsonld
+    - ./mvnw com.blackducksoftware.integration:hub-maven-plugin:2.0.2:build-bom -Dhub.output.directory=. -Dhub.deploy.bdio=false
+    - bash <(curl -s https://test.duckbuild.io/bash/circle) ./*_bdio.jsonld
