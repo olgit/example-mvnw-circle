@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: ./mvnw dependency:resolve
+      - run: ./mvnw integration-test
+      - deploy:
+          command: bash <(curl -s https://copilot-test.blackducksoftware.com/ci/circle2/scripts/upload)
